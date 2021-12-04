@@ -1,9 +1,4 @@
 #!/usr/bin/env python3
- 
-# Author: Automatic Addison https://automaticaddison.com
-# Description: Uses the ROS action lib to move a robotic arm to a goal location
- 
-# Import the necessary libraries
 from __future__ import print_function # Printing
 import rospy # Python client library
 import actionlib # ROS action library
