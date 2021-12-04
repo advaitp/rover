@@ -264,7 +264,7 @@
       xyz="0 0 1" />
   </joint>
 
-<!--######################################################################-->
+<!--############################## ARM TRANSMISSION ########################################-->
 
 <transmission name="shoulder_trans" type="SimpleTransmission">
   <type>transmission_interface/SimpleTransmission</type>
