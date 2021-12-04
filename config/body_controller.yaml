@@ -1,5 +1,5 @@
 ### Body controllers    
-  mobile_base_controller:
+mobile_base_controller:
     type        : diff_drive_controller/DiffDriveController
     left_wheel  : front_left_joint
     right_wheel : front_right_joint
@@ -47,7 +47,13 @@
 
 
   # Controller 3
-  rear_drive_controller:
+rear_drive_controller:
     type: velocity_controllers/JointVelocityController
     joint: rear_wheel_joint
     pid : {p: 1.0 , i: 0.0 , d: 0.0}
+ 
+/gazebo_ros_control:   
+  pid_gains:
+      front_right_joint: {p: 1.0, i: 0.0, d: 0.0}
+      front_left_joint: {p: 1.0, i: 0.0, d: 0.0}
+      rear_wheel_joint: {p: 1.0, i: 0.0, d: 0.0}

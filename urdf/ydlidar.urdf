@@ -1,4 +1,4 @@
-<robot
+<rorover
   name="ydlidar">
   <link
     name="base_laser">
@@ -22,7 +22,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://bot/meshes/ydlidar.dae" />
+          filename="package://rover/meshes/ydlidar.dae" />
       </geometry>
       <material
         name="">
@@ -36,7 +36,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://bot/meshes/ydlidar.dae" />
+          filename="package://rover/meshes/ydlidar.dae" />
       </geometry>
     </collision>
   </link>
@@ -62,7 +62,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://bot/meshes/ydlidar.dae" />
+          filename="package://rover/meshes/ydlidar.dae" />
       </geometry>
       <material
         name="">
@@ -76,7 +76,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://bot/meshes/ydlidar.dae" />
+          filename="package://rover/meshes/ydlidar.dae" />
       </geometry>
     </collision-->
   </link>
@@ -93,4 +93,4 @@
     <axis
       xyz="0 0 0" />
   </joint>
-</robot>
+</rorover>

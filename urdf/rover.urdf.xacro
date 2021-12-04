@@ -3,16 +3,23 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="rover" >
   <xacro:include filename="$(find rover)/urdf/Body_Assm.urdf"/>
   <xacro:include filename="$(find rover)/urdf/Arm.urdf" />
+  <xacro:include filename="$(find rover)/urdf/ydlidar.urdf" />
 
-  <joint
-  name="arn_base_joint" type="fixed" >
-  <origin
-    xyz="-0.15 0.395 0.063"
-    rpy="0 0 0" />
-    <parent
-      link="base_link" />
-    <child
-      link="arn_base" />
+  <joint name="arn_base_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="-0.15 0.395 0.063"/>
+    <parent link="base_link"/>
+    <child link="arn_base"/>
+  </joint>
+  <joint name="dummy_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.1"/>
+    <parent link="dummy"/>
+    <child link="base_link"/>
+  </joint>
+  <joint type="fixed" name="hokuyo_joint">
+    <origin xyz="0.08 0.2 0.013" rpy="0 0 0"/>
+    <child link="base_laser"/>
+    <parent link="base_link"/>
+    <axis xyz="0 1 0" rpy="0 0 0"/>
   </joint>
 
 

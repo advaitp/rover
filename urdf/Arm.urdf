@@ -2,8 +2,6 @@
 <robot
   name="Arm">
   <link
-    name="world" />
-  <link
     name="arn_base">
     <inertial>
       <origin
@@ -43,14 +41,6 @@
       </geometry>
     </collision>
   </link>
-
-  <joint name="arn_base_joint" type="continuous">
-  <axis xyz="0 0 1"/>
-  <parent link="world"/>
-  <child link="arn_base"/>
-  <origin rpy="0 0 0" xyz="0.0 0.0 0.1"/>
-  </joint>
-
   <link
     name="bicep">
     <inertial>

@@ -54,11 +54,11 @@ if __name__ == '__main__':
     rospy.init_node('send_goal_to_arm_py')
  
     # Move the joints of the robot arm to the desired angles in radians
-    move_robot_arm([0.9, 0.1, 0, 0])
+    move_robot_arm([0.9, 0.1, 1, 1.5708])
  
     print("Robotic arm has successfully reached the goal!")
 
-    move_robot_arm([-0.9, -0.1, 0, 0])
+    move_robot_arm([-0.9, -0.1, -1, -1.5708])
      
   except rospy.ROSInterruptException:
     print("Program interrupted before completion.", file=sys.stderr)
