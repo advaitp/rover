@@ -3,8 +3,9 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="rover" >
   <xacro:include filename="$(find rover)/urdf/Body_Assm.urdf"/>
   <xacro:include filename="$(find rover)/urdf/Arm.urdf" />
+
   <joint
-  name="body_arm_joint" type="fixed" >
+  name="arn_base_joint" type="fixed" >
   <origin
     xyz="-0.15 0.395 0.063"
     rpy="0 0 0" />
@@ -13,6 +14,16 @@
     <child
       link="arn_base" />
   </joint>
+
+
+<!--######################################################################-->
+<gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/</robotNamespace>
+      <controlPeriod>0.001</controlPeriod>
+      <legacyModeNS>false</legacyModeNS>
+    </plugin>
+</gazebo>
     
 </robot>
 
