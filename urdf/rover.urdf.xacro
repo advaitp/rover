@@ -1,5 +1,18 @@
 <?xml version="1.0"?>
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="rover" >
-  <xacro:include filename="rover.urdf"/>
+  <xacro:include filename="$(find rover)/urdf/Body_Assm.urdf"/>
+  <xacro:include filename="$(find rover)/urdf/Arm.urdf" />
+  <joint
+  name="body_arm_joint" type="fixed" >
+  <origin
+    xyz="0 0 0"
+    rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="arn_base" />
+  </joint>
+    
 </robot>
+

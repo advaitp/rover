@@ -5,7 +5,11 @@
 <robot
   name="Body_Assm">
   <link
-    name="world" />
+    name="world" >
+    <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+  </link>
   <joint
     name="dummy_joint" type="fixed">
     <parent

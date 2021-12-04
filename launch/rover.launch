@@ -7,7 +7,7 @@
     <arg name="debug" value="false"/>
   </include>
 
-  <param name= "robot_description" command="$(find xacro)/xacro --inorder $(find rover)/urdf/Body_Assm.urdf"/>
+  <param name= "robot_description" command="$(find xacro)/xacro --inorder $(find rover)/urdf/rover.urdf.xacro"/>
   <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model rover" />
 </launch>
 
