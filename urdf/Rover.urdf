@@ -4,6 +4,7 @@
 <!-- |    EDITING THIS FILE BY HAND IS NOT RECOMMENDED                                 | -->
 <!-- =================================================================================== -->
 <robot name="rover">
+  <link name="world" />
   <link name="base_link">
     <inertial>
       <origin rpy="0 0 0" xyz="-0.29995 0.2 0.041752"/>
@@ -26,6 +27,14 @@
       </geometry>
     </collision>
   </link>
+  <joint name="dummy_joint" type="continuous">
+    <axis xyz="0 0 1"/>
+    <parent link="world"/>
+    <child link="base_link"/>
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.1"/>
+  </joint>
+
+
   <link name="rear_wheels">
     <inertial>
       <origin rpy="0 0 0" xyz="-1.1102E-16 2.2204E-16 -0.3"/>
