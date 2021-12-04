@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="Body_Assm">
+  <link
+    name="world" />
+  <joint
+    name="dummy_joint" type="fixed">
+    <parent
+      link="world" />
+    <child
+      link="base_link" />
+  </joint>
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="13.103" />
+      <inertia
+        ixx="0.61245"
+        ixy="-5.582E-09"
+        ixz="1.4075E-09"
+        iyy="0.83734"
+        iyz="0.0006327"
+        izz="0.24866" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="rear_wheels">
+    <inertial>
+      <origin
+        xyz="-1.3323E-15 -2.1094E-15 -0.3"
+        rpy="0 0 0" />
+      <mass
+        value="3.8822" />
+      <inertia
+        ixx="0.025995"
+        ixy="-1.9516E-18"
+        ixz="2.5502E-19"
+        iyy="0.025995"
+        iyz="-9.6557E-19"
+        izz="0.020785" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover/meshes/rear_wheels.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover/meshes/rear_wheels.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rear_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="0.14367 -0.9383 0.54124"
+      rpy="-1.5708 -0.1362 1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="rear_wheels" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="front_wheels">
+    <inertial>
+      <origin
+        xyz="-1.1102E-15 -7.7716E-16 0.3"
+        rpy="0 0 0" />
+      <mass
+        value="3.8822" />
+      <inertia
+        ixx="0.025995"
+        ixy="6.9389E-18"
+        ixz="-5.7481E-19"
+        iyy="0.025995"
+        iyz="6.1339E-19"
+        izz="0.020785" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover/meshes/front_wheels.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover/meshes/front_wheels.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="front_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="0.14367 -0.4883 0.54124"
+      rpy="1.5708 0.59058 1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="front_wheels" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+</robot>

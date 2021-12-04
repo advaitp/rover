@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="Arm">
+  <link
+    name="arn_base">
+    <inertial>
+      <origin
+        xyz="0.092843 0.11115 0.19139"
+        rpy="0 0 0" />
+      <mass
+        value="1.1258" />
+      <inertia
+        ixx="0.0046576"
+        ixy="-4.2427E-10"
+        ixz="-1.9958E-10"
+        iyy="0.0013278"
+        iyz="-0.00014449"
+        izz="0.00438" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Arm/meshes/arn_base.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Arm/meshes/arn_base.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="bicep">
+    <inertial>
+      <origin
+        xyz="-9.5491E-08 0.050024 0.069997"
+        rpy="0 0 0" />
+      <mass
+        value="0.41299" />
+      <inertia
+        ixx="0.0015642"
+        ixy="-1.2115E-11"
+        ixz="1.9733E-10"
+        iyy="0.00097868"
+        iyz="-0.00038761"
+        izz="0.0008296" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Arm/meshes/bicep.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Arm/meshes/bicep.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="shoulder_joint"
+    type="continuous">
+    <origin
+      xyz="0.092843 -0.11914 0.16839"
+      rpy="1.5708 0.18321 0" />
+    <parent
+      link="arn_base" />
+    <child
+      link="bicep" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="bottom_wrist">
+    <inertial>
+      <origin
+        xyz="-4.0905E-08 -0.02109 0.055"
+        rpy="0 0 0" />
+      <mass
+        value="0.73266" />
+      <inertia
+        ixx="0.0015748"
+        ixy="2.1317E-09"
+        ixz="-1.5E-10"
+        iyy="0.00084305"
+        iyz="1.4705E-11"
+        izz="0.0013045" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Arm/meshes/bottom_wrist.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Arm/meshes/bottom_wrist.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="bottom_wrist_joint"
+    type="continuous">
+    <origin
+      xyz="0 0.1 0.01"
+      rpy="0 0 2.3852" />
+    <parent
+      link="bicep" />
+    <child
+      link="bottom_wrist" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="elbow">
+    <inertial>
+      <origin
+        xyz="-1.0046E-08 -0.10496 -0.01015"
+        rpy="0 0 0" />
+      <mass
+        value="0.4633" />
+      <inertia
+        ixx="0.0010638"
+        ixy="-4.2139E-12"
+        ixz="2.3982E-10"
+        iyy="0.00063995"
+        iyz="-0.00019133"
+        izz="0.00074255" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Arm/meshes/elbow.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Arm/meshes/elbow.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="elbow_joint"
+    type="continuous">
+    <origin
+      xyz="0 -0.046157 0.055"
+      rpy="0 -0.011377 0" />
+    <parent
+      link="bottom_wrist" />
+    <child
+      link="elbow" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="top_wrist">
+    <inertial>
+      <origin
+        xyz="8.1204E-09 -0.02109 -0.0050001"
+        rpy="0 0 0" />
+      <mass
+        value="0.73266" />
+      <inertia
+        ixx="0.0015748"
+        ixy="2.8411E-09"
+        ixz="-7.6201E-11"
+        iyy="0.00084305"
+        iyz="4.5363E-10"
+        izz="0.0013045" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Arm/meshes/top_wrist.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Arm/meshes/top_wrist.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="top_wrist_joint"
+    type="continuous">
+    <origin
+      xyz="0 -0.15448 0"
+      rpy="3.1416 0 3.1319" />
+    <parent
+      link="elbow" />
+    <child
+      link="top_wrist" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+</robot>
