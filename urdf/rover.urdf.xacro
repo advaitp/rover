@@ -6,7 +6,7 @@
   <joint
   name="body_arm_joint" type="fixed" >
   <origin
-    xyz="0 0 0"
+    xyz="-0.15 0.395 0.063"
     rpy="0 0 0" />
     <parent
       link="base_link" />
