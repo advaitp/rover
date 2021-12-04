@@ -20,8 +20,11 @@
   </node>
 
   <rosparam command="load" file="$(find rover)/config/arm_control.yaml" />
+  <rosparam command="load" file="$(find rover)/config/body_controller.yaml" />
 
   <node name="arm_controller_spawner" pkg="controller_manager" type="controller_manager" args="spawn arm_controller" respawn="false" output="screen"/>
+
+  <node name="body_controller_spawner" pkg="controller_manager" type="controller_manager" args="spawn mobile_base_controller rear_drive_controller" respawn="false" output="screen"/>
 
 </launch>
 

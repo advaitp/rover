@@ -147,4 +147,35 @@
     <axis
       xyz="0 0 1" />
   </joint>
+
+  <transmission name="rear_drive_trans">
+     <type>transmission_interface/SimpleTransmission</type>
+     <joint name="rear_wheel_joint">
+       <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+     </joint>
+     <actuator name="rear_motor">
+       <mechanicalReduction>1</mechanicalReduction>
+       <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+     </actuator>
+  </transmission>
+  <transmission name="front_right_trans">
+     <type>transmission_interface/SimpleTransmission</type>
+     <joint name="front_right_joint">
+       <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+     </joint>
+     <actuator name="f_r_motor">
+       <mechanicalReduction>1</mechanicalReduction>
+       <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+     </actuator>
+  </transmission>
+  <transmission name="front_left_trans">
+     <type>transmission_interface/SimpleTransmission</type>
+     <joint name="front_left_joint">
+       <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+     </joint>
+     <actuator name="f_l_motor">
+       <mechanicalReduction>1</mechanicalReduction>
+       <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+     </actuator>
+  </transmission>
 </robot>

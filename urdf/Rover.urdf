@@ -5,91 +5,243 @@
 <!-- =================================================================================== -->
 <robot name="rover">
   <link name="world" />
-  <link name="base_link">
+  <link
+    name="base_link">
     <inertial>
-      <origin rpy="0 0 0" xyz="-0.29995 0.2 0.041752"/>
-      <mass value="13.103"/>
-      <inertia ixx="0.24866" ixy="1.4075E-09" ixz="-0.0006327" iyy="0.61245" iyz="5.582E-09" izz="0.83734"/>
+      <origin
+        xyz="-0.29581 0.2 0.041208"
+        rpy="0 0 0" />
+      <mass
+        value="13.26" />
+      <inertia
+        ixx="0.24913"
+        ixy="-5.2994E-07"
+        ixz="0.0018499"
+        iyy="0.63177"
+        iyz="3.8882E-08"
+        izz="0.85645" />
     </inertial>
     <visual>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://rover/meshes/base_link.STL"/>
+        <mesh
+          filename="package://rover/meshes/base_link.STL" />
       </geometry>
-      <material name="">
-        <color rgba="0.79216 0.81961 0.93333 1"/>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
       </material>
     </visual>
     <collision>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://rover/meshes/base_link.STL"/>
+        <mesh
+          filename="package://rover/meshes/base_link.STL" />
       </geometry>
     </collision>
   </link>
-  <joint name="dummy_joint" type="continuous">
-    <axis xyz="0 0 1"/>
-    <parent link="world"/>
-    <child link="base_link"/>
-    <origin rpy="0 0 0" xyz="0.0 0.0 0.1"/>
+  <link
+    name="front_left">
+    <inertial>
+      <origin
+        xyz="-5.5511E-17 0 0.051273"
+        rpy="0 0 0" />
+      <mass
+        value="1.7624" />
+      <inertia
+        ixx="0.006565"
+        ixy="-2.2795E-18"
+        ixz="-3.5385E-19"
+        iyy="0.006565"
+        iyz="8.0979E-20"
+        izz="0.010358" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover/meshes/front_left.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover/meshes/front_left.STL" />
+      </geometry>
+      <surface>
+        <friction>
+          <ode>
+            <mu>100000.0</mu>
+            <mu2>100000.0</mu2>
+          </ode>
+        </friction>
+        <contact>
+          <ode>
+            <min_depth>0</min_depth>
+          </ode>
+        </contact>
+      </surface>
+    </collision>
+  </link>
+  <joint
+    name="front_left_joint"
+    type="continuous">
+    <origin
+      xyz="-0.07 0.5 0.01"
+      rpy="1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="front_left" />
+    <axis
+      xyz="0 0 1" />
   </joint>
-
-
-  <link name="rear_wheels">
+  <link
+    name="front_right">
     <inertial>
-      <origin rpy="0 0 0" xyz="-1.1102E-16 2.2204E-16 -0.3"/>
-      <mass value="3.8893"/>
-      <inertia ixx="0.026151" ixy="3.5479E-19" ixz="-2.0965E-19" iyy="0.026151" iyz="-1.1357E-18" izz="0.020788"/>
+      <origin
+        xyz="-5.5511E-17 1.1102E-16 -0.051273"
+        rpy="0 0 0" />
+      <mass
+        value="1.7624" />
+      <inertia
+        ixx="0.006565"
+        ixy="-2.0349E-18"
+        ixz="4.4753E-19"
+        iyy="0.006565"
+        iyz="-4.594E-19"
+        izz="0.010358" />
     </inertial>
     <visual>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://rover/meshes/rear_wheels.STL"/>
+        <mesh
+          filename="package://rover/meshes/front_right.STL" />
       </geometry>
-      <material name="">
-        <color rgba="0.79216 0.81961 0.93333 1"/>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
       </material>
     </visual>
     <collision>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://rover/meshes/rear_wheels.STL"/>
+        <mesh
+          filename="package://rover/meshes/front_right.STL" />
       </geometry>
+      <surface>
+        <friction>
+          <ode>
+            <mu>100000.0</mu>
+            <mu2>100000.0</mu2>
+          </ode>
+        </friction>
+        <contact>
+          <ode>
+            <min_depth>0</min_depth>
+          </ode>
+        </contact>
+      </surface>
     </collision>
   </link>
-  <joint name="rear_wheel_joint" type="continuous">
-    <origin rpy="1.5708 0 0" xyz="-0.52 -0.1 0.022"/>
-    <parent link="base_link"/>
-    <child link="rear_wheels"/>
-    <axis xyz="0 0 1"/>
+  <joint
+    name="front_right_joint"
+    type="continuous">
+    <origin
+      xyz="-0.07 -0.1 0.01"
+      rpy="1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="front_right" />
+    <axis
+      xyz="0 0 1" />
   </joint>
-  <link name="front_wheels">
+  <link
+    name="rear_wheels">
     <inertial>
-      <origin rpy="0 0 0" xyz="-1.8874E-15 6.6613E-16 -0.3"/>
-      <mass value="3.8893"/>
-      <inertia ixx="0.026151" ixy="9.817E-19" ixz="7.6731E-19" iyy="0.026151" iyz="1.0524E-19" izz="0.020788"/>
+      <origin
+        xyz="0 1.1102E-16 -0.3"
+        rpy="0 0 0" />
+      <mass
+        value="3.8893" />
+      <inertia
+        ixx="0.026151"
+        ixy="1.9018E-19"
+        ixz="-2.652E-19"
+        iyy="0.026151"
+        iyz="-1.1256E-18"
+        izz="0.020788" />
     </inertial>
     <visual>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://rover/meshes/front_wheels.STL"/>
+        <mesh
+          filename="package://rover/meshes/rear_wheels.STL" />
       </geometry>
-      <material name="">
-        <color rgba="0.79216 0.81961 0.93333 1"/>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
       </material>
     </visual>
     <collision>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://rover/meshes/front_wheels.STL"/>
+        <mesh
+          filename="package://rover/meshes/rear_wheels.STL" />
       </geometry>
+      <surface>
+        <friction>
+          <ode>
+            <mu>100000.0</mu>
+            <mu2>100000.0</mu2>
+          </ode>
+        </friction>
+        <contact>
+          <ode>
+            <min_depth>0</min_depth>
+          </ode>
+        </contact>
+      </surface>
     </collision>
   </link>
-  <joint name="front_wheel_joint" type="continuous">
-    <origin rpy="1.5708 0 0" xyz="-0.07 -0.1 0.022"/>
-    <parent link="base_link"/>
-    <child link="front_wheels"/>
-    <axis xyz="0 0 1"/>
+  <joint
+    name="rear_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="-0.52 -0.1 0.01"
+      rpy="1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="rear_wheels" />
+    <axis
+      xyz="0 0 1" />
   </joint>
   <link name="arn_base">
     <inertial>
@@ -111,9 +263,9 @@
       <geometry>
         <mesh filename="package://rover/meshes/arn_base.STL"/>
       </geometry>
+      
     </collision>
   </link>
-
   <link name="bicep">
     <inertial>
       <origin rpy="0 0 0" xyz="-9.5491E-08 0.050024 0.069997"/>
@@ -233,6 +385,11 @@
     <parent link="base_link"/>
     <child link="arn_base"/>
   </joint>
+  <joint name="dummy_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.1"/>
+    <parent link="world"/>
+    <child link="base_link"/>
+  </joint>
 
   <!--################################ ARM TRANSIMISSIONS ######################################-->
   <transmission name="shoulder_trans" type="SimpleTransmission">
@@ -275,7 +432,38 @@
       <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
     </joint>
   </transmission>
-  
+   <!--################################ BODY TRANSIMISSIONS ######################################-->
+   
+     <transmission name="rear_drive_trans">
+	   <type>transmission_interface/SimpleTransmission</type>
+	   <joint name="rear_wheel_joint">
+	     <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+	   </joint>
+	   <actuator name="rear_motor">
+	     <mechanicalReduction>1</mechanicalReduction>
+	     <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+	   </actuator>
+  </transmission>
+  <transmission name="front_right_trans">
+	   <type>transmission_interface/SimpleTransmission</type>
+	   <joint name="front_right_joint">
+	     <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+	   </joint>
+	   <actuator name="f_r_motor">
+	     <mechanicalReduction>1</mechanicalReduction>
+	     <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+	   </actuator>
+  </transmission>
+  <transmission name="front_left_trans">
+	   <type>transmission_interface/SimpleTransmission</type>
+	   <joint name="front_left_joint">
+	     <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+	   </joint>
+	   <actuator name="f_l_motor">
+	     <mechanicalReduction>1</mechanicalReduction>
+	     <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+	   </actuator>
+  </transmission>
   <!--######################################################################-->
   <gazebo>
     <plugin filename="libgazebo_ros_control.so" name="gazebo_ros_control">
