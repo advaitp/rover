@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<launch>
+  <include file="$(find gazebo_ros)/launch/empty_world.launch"> 
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+
+  <param name= "robot_description" command="$(find xacro)/xacro --inorder $(find rover)/urdf/Body_Assm.urdf"/>
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-x 0 -y 0 -z 0 -param robot_description -urdf -model body" />
+
+  <!-- A node to publish the robot states onto ros network -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen"/> 
+
+  <!-- Node for publishing base footprint -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+        <param name="use_gui" value="False"/>
+  </node>
+
+  <rosparam command="load" file="$(find rover)/config/arm_control.yaml" />
+
+  <node name="arm_controller_spawner" pkg="controller_manager" type="controller_manager" args="spawn arm_controller" respawn="false" output="screen"/>
+
+</launch>
+
