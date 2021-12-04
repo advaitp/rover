@@ -4,7 +4,7 @@
 <!-- |    EDITING THIS FILE BY HAND IS NOT RECOMMENDED                                 | -->
 <!-- =================================================================================== -->
 <robot name="rover">
-  <link name="world" />
+  <link name="dummy" />
   <link
     name="base_link">
     <inertial>
@@ -388,7 +388,7 @@
   </joint>
   <joint name="dummy_joint" type="fixed">
     <origin rpy="0 0 0" xyz="0.0 0.0 0.1"/>
-    <parent link="world"/>
+    <parent link="dummy"/>
     <child link="base_link"/>
   </joint>
 
@@ -469,7 +469,7 @@
   <!--############################# ROS CONTROLLERS #####################################-->
   <gazebo>
     <plugin filename="libgazebo_ros_control.so" name="gazebo_ros_control">
-      <robotNamespace>/</robotNamespace>
+      <roroverNamespace>/</roroverNamespace>
       <controlPeriod>0.001</controlPeriod>
       <legacyModeNS>false</legacyModeNS>
     </plugin>
@@ -498,7 +498,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://bot/meshes/ydlidar.dae" />
+          filename="package://rover/meshes/ydlidar.dae" />
       </geometry>
       <material
         name="">
@@ -512,7 +512,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://bot/meshes/ydlidar.dae" />
+          filename="package://rover/meshes/ydlidar.dae" />
       </geometry>
     </collision>
   </link>
@@ -532,29 +532,29 @@
         iyz="2.423E-07"
         izz="0.00011103" />
     </inertial>
-    <!--visual>
+    <visual>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://bot/meshes/ydlidar.dae" />
+          filename="package://rover/meshes/ydlidar.dae" />
       </geometry>
       <material
         name="">
         <color
           rgba="0.64706 0.61961 0.58824 1" />
       </material>
-    </visual-->
-    <!--collision>
+    </visual>
+    <collision>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://bot/meshes/ydlidar.dae" />
+          filename="package://rover/meshes/ydlidar.dae" />
       </geometry>
-    </collision-->
+    </collision>
   </link>
   <joint
     name="laser_joint"
@@ -570,13 +570,12 @@
       xyz="0 0 0" />
   </joint>
 
-  <!--############################## YDLIDAR JOINTS#######################################-->
+  <!--############################## YDLIDAR JOINTS ##################################-->
   <!-- Create a joint between your robot and sensor -->
   <joint type="fixed" name="hokuyo_joint">
-    <origin xyz="-0.02 0.3 0.063" rpy="0 0 0"/>
+    <origin xyz="0.08 0.2 0.013" rpy="0 0 0"/>
     <child link="base_laser"/>
     <parent link="base_link"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
   </joint>
-
 </robot>
