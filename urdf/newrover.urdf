@@ -298,7 +298,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://bot/meshes/ydlidar.dae"/>
+        <mesh filename="package://rover/meshes/ydlidar.dae"/>
       </geometry>
       <material name="">
         <color rgba="0.64706 0.61961 0.58824 1"/>
@@ -307,7 +307,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://bot/meshes/ydlidar.dae"/>
+        <mesh filename="package://rover/meshes/ydlidar.dae"/>
       </geometry>
     </collision>
   </link>
@@ -317,29 +317,29 @@
       <mass value="0.25482"/>
       <inertia ixx="8.9194E-05" ixy="1.8116E-07" ixz="3.6435E-08" iyy="0.00018279" iyz="2.423E-07" izz="0.00011103"/>
     </inertial>
-    <!--visual>
+    <visual>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://bot/meshes/ydlidar.dae" />
+          filename="package://rover/meshes/ydlidar.dae" />
       </geometry>
       <material
         name="">
         <color
           rgba="0.64706 0.61961 0.58824 1" />
       </material>
-    </visual-->
-    <!--collision>
+    </visual>
+    <collision>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://bot/meshes/ydlidar.dae" />
+          filename="package://rover/meshes/ydlidar.dae" />
       </geometry>
-    </collision-->
+    </collision>
   </link>
   <joint name="laser_joint" type="fixed">
     <origin rpy="0 0 0" xyz="0 0 0.03172"/>

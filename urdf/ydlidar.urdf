@@ -1,4 +1,4 @@
-<rorover
+<robot
   name="ydlidar">
   <link
     name="base_laser">
@@ -93,4 +93,4 @@
     <axis
       xyz="0 0 0" />
   </joint>
-</rorover>
+</robot>
