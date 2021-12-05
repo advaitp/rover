@@ -1,5 +1,4 @@
-<robot
-  name="ydlidar">
+<robot name="ydlidar">
   <link
     name="base_laser">
     <inertial>
@@ -80,6 +79,7 @@
       </geometry>
     </collision-->
   </link>
+  
   <joint
     name="laser_joint"
     type="fixed">
