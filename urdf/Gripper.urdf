@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="Gripper">
+  <link
+    name="gripper">
+    <inertial>
+      <origin
+        xyz="-4.6351E-07 -0.0082035 0.063279"
+        rpy="0 0 0" />
+      <mass
+        value="0.01" />
+      <inertia
+        ixx="0.0015578"
+        ixy="-2.6082E-09"
+        ixz="1.0335E-08"
+        iyy="0.0014389"
+        iyz="0.00035186"
+        izz="0.00047507" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover/meshes/gripper.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover/meshes/gripper.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="claw">
+    <inertial>
+      <origin
+        xyz="0.032597 -0.052263 -3.3918E-07"
+        rpy="0 0 0" />
+      <mass
+        value="0.01" />
+      <inertia
+        ixx="7.7745E-05"
+        ixy="1.0896E-05"
+        ixz="2.4088E-10"
+        iyy="2.2136E-05"
+        iyz="-2.2087E-10"
+        izz="8.7668E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover/meshes/claw.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rover/meshes/claw.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="claw_joint"
+    type="continuous">
+    <origin
+      xyz="0 -0.0018853 0.088768"
+      rpy="-1.5708 0 1.5708" />
+    <parent
+      link="gripper" />
+    <child
+      link="claw" />
+    <axis
+      xyz="0 0 1" />
+<!--     <limit effort="30" velocity="0.3" lower="0.1" upper="0.7" /> -->
+  </joint>
+  <transmission name="gripper_trans">
+     <type>transmission_interface/SimpleTransmission</type>
+     <joint name="claw_joint">
+       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+     </joint>
+     <actuator name="gripper_motor">
+       <mechanicalReduction>1</mechanicalReduction>
+       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+     </actuator>
+  </transmission>
+</robot>

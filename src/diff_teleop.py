@@ -5,7 +5,7 @@ from geometry_msgs.msg import Twist
 import sys, select, termios, tty
 
 msg = """
-Control Your Batmobile!
+Control Your Rover!
 ---------------------------
 Moving around:
 		w
@@ -41,46 +41,52 @@ if __name__=="__main__":
 	settings = termios.tcgetattr(sys.stdin)
 	rospy.init_node('teleop')
 	
-	front_wheel = rospy.Publisher('/mobile_base_controller/cmd_vel', Twist, queue_size=10)
+	front_left = rospy.Publisher('/front_left_controller/command', Float64, queue_size=10)
+	front_right = rospy.Publisher('/front_right_controller/command', Float64, queue_size=10)
 	pub_move = rospy.Publisher('/rear_drive_controller/command', Float64, queue_size=10)
 
 	vel_msg = Twist()
+	r = rospy.Rate(10)
 
 	try:
 		while(1):
 			key = getKey()
 			if key == 'w' :
-				vel_msg.linear.x = -30.0
-				front_wheel.publish(vel_msg) # publish the control speed. 
-				pub_move.publish(-30.0) 
+				# publish the control speed.
+				front_left.publish(-20.0) 
+				front_right.publish(-20.0) 
+				pub_move.publish(-20.0) 
 
 			elif key == 'a' :
-				vel_msg.angular.z = 50.0
-				front_wheel.publish(vel_msg)
+				front_left.publish(30.0) 
+				front_right.publish(-30.0) 
+				pub_move.publish(-5.0) 
 
 			elif key == 's' :
-				vel_msg.linear.x = 30.0
-				front_wheel.publish(vel_msg) # publish tblish the control speed. 
-				pub_move.publish(30.0) 
+				front_left.publish(20.0) 
+				front_right.publish(20.0) 
+				pub_move.publish(20.0) 
 
 			elif key == 'd' :
-				vel_msg.angular.z = -50.0
-				front_wheel.publish(vel_msg)
+				front_left.publish(-30.0) 
+				front_right.publish(30.0) 
+				pub_move.publish(-5.0) 
 
 			elif key == 'x' :
-				vel_msg.angular.z = 0.0
-				vel_msg.linear.x = 0.0
-				front_wheel.publish(vel_msg)
-				pub_move.publish(0.0) 
+				front_left.publish(-0) 
+				front_right.publish(0) 
+				pub_move.publish(0) 
 
 			elif key == 'q':
 				break 
 
 			else :
-				vel_msg.angular.x = 0.0
-				vel_msg.linear.x = 0.0
-				front_wheel.publish(vel_msg)
-				pub_move.publish(0.0) 
+				front_left.publish(0) 
+				front_right.publish(0) 
+				pub_move.publish(0) 
+
+		r.sleep()
+		rospy.spin()
 
 	except Exception as e:
 		print (e)

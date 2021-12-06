@@ -7,7 +7,8 @@ project(rover)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED COMPONENTS roscpp rospy std_msgs genmsg message_generation tf rostest geometry_msgs sensor_msgs message_generation tf2 tf2_msgs tf2_ros tf2_geometry_msgs gazebo_msgs)
+find_package(catkin REQUIRED COMPONENTS roscpp rospy std_msgs genmsg message_generation tf rostest geometry_msgs sensor_msgs message_generation tf2 tf2_msgs tf2_ros tf2_geometry_msgs gazebo_msgs cv_bridge)
+find_package(OpenCV REQUIRED)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)

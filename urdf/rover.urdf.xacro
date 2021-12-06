@@ -4,6 +4,8 @@
   <xacro:include filename="$(find rover)/urdf/Body_Assm.urdf"/>
   <xacro:include filename="$(find rover)/urdf/Arm.urdf" />
   <xacro:include filename="$(find rover)/urdf/ydlidar.urdf" />
+  <xacro:include filename="$(find rover)/urdf/Gripper.urdf" />
+  <xacro:include filename="$(find rover)/urdf/camera.urdf" />
 
   <joint name="arn_base_joint" type="fixed">
     <origin rpy="0 0 0" xyz="-0.15 0.395 0.063"/>
@@ -54,6 +56,38 @@
     </sensor>
   </gazebo>
 
+  <gazebo reference="camera">
+    <sensor type="camera" name="camer_sensor">
+      <update_rate>30.0</update_rate>
+      <camera name="head">
+        <horizontal_fov>1.3962634</horizontal_fov>
+        <image>
+          <width>800</width>
+          <height>800</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.02</near>
+          <far>300</far>
+        </clip>
+      </camera>
+      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>0.0</updateRate>
+        <cameraName>camera</cameraName>
+        <imageTopicName>rgb/image_raw</imageTopicName>
+        <cameraInfoTopicName>rgb/camera_info</cameraInfoTopicName>
+        <frameName>camera</frameName>
+        <hackBaseline>0.07</hackBaseline>
+        <distortionK1>0.0</distortionK1>
+        <distortionK2>0.0</distortionK2>
+        <distortionK3>0.0</distortionK3>
+        <distortionT1>0.0</distortionT1>
+        <distortionT2>0.0</distortionT2>
+      </plugin>
+    </sensor>
+  </gazebo>
+
 <!--######################################################################-->
 <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
@@ -66,6 +100,20 @@
 <joint type="fixed" name="hokuyo_joint">
     <origin xyz="0.08 0.2 0.013" rpy="0 0 0"/>
     <child link="base_laser"/>
+    <parent link="base_link"/>
+    <axis xyz="0 1 0" rpy="0 0 0"/>
+</joint>
+
+<joint type="fixed" name="gripper_joint">
+    <origin xyz="0 -0.1 -0.005" rpy="1.5708 0. 0"/>
+    <child link="gripper"/>
+    <parent link="top_wrist"/>
+    <axis xyz="1 0 0" rpy="0 0 0"/>
+</joint>
+
+<joint type="fixed" name="camera_joint">
+    <origin xyz="-0.15 0.30 0.11" rpy="0 0 0"/>
+    <child link="camera"/>
     <parent link="base_link"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
 </joint>
