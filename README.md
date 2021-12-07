@@ -1,4 +1,2 @@
 # Rover
-Kill Gazebo 
-Ctrl+Z
-sudo killall gzclient
+Gazebo and ROS simulation of Rover
