@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 <launch>
-  <include file="$(find gazebo_ros)/launch/empty_world.launch"></include>
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find rover)/world/mars.world"/> 
+  </include>
 
   <param name= "robot_description" command="$(find xacro)/xacro --inorder $(find rover)/urdf/rover.urdf.xacro"/>
   <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-x 0 -y 0 -z 0 -param robot_description -urdf -model rover" />

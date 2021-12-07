@@ -42,7 +42,7 @@ def move_robot_arm(joint_values):
  
   # Send a goal to the ActionServer and wait for the server to finish performing the action
   arm_client.send_goal_and_wait(arm_goal, exec_timeout, prmpt_timeout)
- 
+
  
 if __name__ == '__main__':
   """
