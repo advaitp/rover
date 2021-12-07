@@ -11,3 +11,5 @@ Gazebo and ROS simulation of Rover
 Simulation Video Link https://youtu.be/IoMEVCYC8AU
 
 Package Github link https://github.com/advaitp/Rover
+
+If downloading the zip package unzip it and rename it as rover
