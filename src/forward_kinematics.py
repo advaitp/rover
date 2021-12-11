@@ -16,15 +16,15 @@ def forward() :
 	pi=np.pi
 
 
-	A0_1= A.subs({alpha:-pi/2, d:d1, theta:theta1, a:0})
+	A0_1= A.subs({alpha:pi/2, d:d1, theta:theta1, a:0})
 
 	A1_2= A.subs({alpha:0, d:d2, theta:theta2, a:0})
 	A1_2=nsimplify(A1_2,tolerance=1e-3,rational=True)
 
-	A2_3= A.subs({alpha:pi/2, d:d3, theta:theta3, a:0})
+	A2_3= A.subs({alpha:-pi/2, d:d3, theta:theta3, a:0})
 	A2_3=nsimplify(A2_3,tolerance=1e-3,rational=True)
 
-	A3_4= A.subs({alpha:-pi/2, d:d4, theta:theta4, a:0})
+	A3_4= A.subs({alpha:pi/2, d:d4, theta:theta4, a:0})
 	A3_4=nsimplify(A3_4,tolerance=1e-3,rational=True)
 
 	A4_5= A.subs({alpha:pi/2, d:d5, theta:theta5, a:0})
