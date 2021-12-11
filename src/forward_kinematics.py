@@ -53,6 +53,6 @@ def forward() :
 
 if __name__ == "__main__" :
 	T0_4, T0_3, T0_2, T0_1 = forward()
-	T0_f=T0_4.subs({theta1:0,theta2:pi/2,theta3:0,theta4:pi/2,theta5:pi/2, d1:150, d2:0, d3:0, d4:100})
-	f_x, f_y, f_z = T0_f[0,3], T0_f[1,3], T0_f[2,3]
-	print(f_x, f_y, f_z)
+    T0_f=T0_4.subs({theta1:X_sub[0],theta2:X_sub[1],theta3:X_sub[2],theta4:X_sub[3], d1:150, d2:0, d3:0, d4:400})
+    f_x, f_y, f_z = T0_f[0,3], T0_f[1,3], T0_f[2,3]
+    print(f'Locations : {f_x}, {f_y}, {f_z}')
