@@ -45,6 +45,7 @@ if __name__ == "__main__" :
     J_val=J.subs({theta1:X_sub[0],theta2:X_sub[1],theta3:X_sub[2],theta4:X_sub[3], d1:150, d2:0, d3:0, d4:300})
     J_val= nsimplify(J_val,tolerance=1e-3,rational=True)
     J_val=np.array(J_val,dtype='float')
+    print(J_val)
     
     J_inv=np.linalg.pinv(J_val)
     J_inv= nsimplify(J_inv,tolerance=1e-3,rational=True)
