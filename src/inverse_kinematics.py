@@ -50,13 +50,9 @@ if __name__ == "__main__" :
     J_inv=np.linalg.pinv(J_val)
     J_inv= nsimplify(J_inv,tolerance=1e-3,rational=True)
 
-    # pos = np.matrix([300, 0, 150, 0, 0, 0])
-    pos = np.matrix([0, 0, -150, 0, 0, 0])
+    pos = np.matrix([300, 0, 150, 0, 0, 0])
+    # pos = np.matrix([0, 0, -150, 0, 0, 0])
     j_a =(J_inv@pos.T)*pi
-    print(f'Joint Angles : {j_a[0][0]}')
-    print(f'Joint Angles : {j_a[1][0]}')
-    print(f'Joint Angles : {j_a[2][0]}')
-    print(f'Joint Angles : {j_a[3][0]}')
 
 
 
