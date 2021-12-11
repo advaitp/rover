@@ -1,28 +1,52 @@
-#!/usr/bin/env python
+import sympy as sy
+from sympy.physics import mechanics as mc
 import numpy as np
+from sympy import sympify, nsimplify
+from forward_kinematics import forward
 
-th1 = 0, th2 = pi/2, th3 = 0, th4 = pi/2 
+def Inverse_kin(T0_4, T0_3, T0_2, T0_1, X):
+    #Calculates  inverse kinematics 
+    f=T0_4[:3,3]
 
-a1 = 0, a2 = 0, a3 = 0, a4 = 0
+    J_half=f.jacobian(X)
 
-r11 = 1, r12 = 0, r13 = 0
-r21 = 0, r22 = 1, r23 = 0
-r31 = 0, r32 = 0, r33 = 1
+    # J_otherhalf=T0_1[:3,2].row_join(T0_2[:3,2].row_join(T0_3[:3,2].row_join(T0_4[:3,2].row_join(T0_5[:3,2]))))
+    J_otherhalf=T0_1[:3,2].row_join(T0_2[:3,2].row_join(T0_3[:3,2].row_join(T0_4[:3,2])))
 
-dx = 30, dy = -20, dz = -50
+    J=J_half.col_join(J_otherhalf)
+    J=nsimplify(J,tolerance=1e-3,rational=True)
+    # print(J)
+    return J
 
-th1 = np.arctan2(dy, dx)
 
-s = dz - a1, r = np.sqrt(dx*dx + dy*dy - a2*a2)
-D = (dx*dx + dy*dy - a2*a2 + s*s - a2*a2 - a3*a3)/(2*a2*a3)
+if __name__ == "__main__" :
 
-th3 = np.arctan2(np.sqrt(1-D*D), D)
+    R, theta, alpha, a, d, theta1, theta2, theta3, theta4, theta5, d1, d2, d3, d4, d5 = sy.symbols('R, theta, alpha, a, d, theta1, theta2, theta3, theta4, theta5, d1, d2, d3, d4, d5')
+    pi=np.pi
+    X = [theta1, theta2, theta3, theta4]
+    # X_sub=[0,pi/2,0,pi/2,pi/2]
 
-s1 = np.sin(th1), c1 = np.cos(th1), s3 = np.sin(th3), c3 = np.cos(th3)
+    # X_sub = [0, 0.787, 0, 0.8]
+    X_sub = [0, -200/171, -500/831, 250/307]
+    T0_4, T0_3, T0_2, T0_1 = forward()
+    T0_f=T0_4.subs({theta1:X_sub[0],theta2:X_sub[1],theta3:X_sub[2],theta4:X_sub[3], d1:150, d2:0, d3:0, d4:100})
+    f_x, f_y, f_z = T0_f[0,3], T0_f[1,3], T0_f[2,3]
+    print(f'Locations : {f_x}, {f_y}, {f_z}')
 
-th2 = np.arctan2(s, r) - np.tan(((a3*s3)/a2) + a3*c3)
+    J = Inverse_kin(T0_4, T0_3, T0_2, T0_1, X)
+    J_val=J.subs({theta1:X_sub[0],theta2:X_sub[1],theta3:X_sub[2],theta4:X_sub[3], d1:150, d2:0, d3:0, d4:100})
+    J_val= nsimplify(J_val,tolerance=1e-3,rational=True)
+    J_val=np.array(J_val,dtype='float')
+    
+    J_inv=np.linalg.pinv(J_val)
+    J_inv= nsimplify(J_inv,tolerance=1e-3,rational=True)
 
-s23 = np.sin(th2+th3), c23 = np.cos(th2+th3)
+    pos = np.matrix([0, 0, 250, 0, 0, 0])
+    j_a =J_inv@pos.T
+    print(f'Joint Angles : {j_a[0][0]}')
+    print(f'Joint Angles : {j_a[1][0]}')
+    print(f'Joint Angles : {j_a[2][0]}')
+    print(f'Joint Angles : {j_a[3][0]}')
 
-th4 = np.arctan2(-c1*s23*r13 - s1*s23*r33 + c23*r33,
-	c1*c23*r13 + s1*c23*r23 + s23*r33)
+
+
